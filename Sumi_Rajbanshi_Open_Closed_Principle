@@ -1,0 +1,47 @@
+Open-Closed Principle - It states that software entities should be open for extension, but closed for modification. This means creating software entities whose behaviour can be changed without the need to edit and recompile the code itself. 
+
+Open-Close Principle - Bad example
+ class Maths {
+ 
+ 	public void Figure(Figure f) {
+ 		if (f_type==1)
+ 			Sphere(s);
+ 		else if (f_type==2)
+ 			Circle(s);
+ 	}
+ 	public void Circle(Circle r) {....}
+ 	public void Sphere(Sphere s) {....}
+ }
+ 
+ class Figure {
+ 	int f_type;
+ }
+ 
+ class Sphere extends Figure {
+ 	Sphere() {
+ 		super.f_type=1;
+ 	}
+ }
+ 
+ class Circle extends Shape {
+ 	Circle() {
+ 		super.f_type=2;
+ 	}
+ }
+
+// Open-Close Principle - Good example
+ class Figure {
+ 	public void Figure(Figure f) {
+ 		f.draw();
+ 	}
+ }
+ 
+ class Figure {
+ 	abstract void Figure();
+ }
+ 
+ class Sphere extends Shape  {
+ 	public Figure() {
+ 		// draw the Sphere
+ 	}
+ }
